@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ZebraPrinter</string>
+    <string name="print">Printer Document</string>
+</resources>
