@@ -1,22 +1,56 @@
 package com.jeluchu.zebraprinter;
 
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+<<<<<<< Updated upstream
 import android.util.Log;
+=======
+import android.os.Looper;
+import android.preference.PreferenceManager;
+>>>>>>> Stashed changes
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import com.zebra.android.comm.BluetoothPrinterConnection;
 import com.zebra.android.comm.ZebraPrinterConnectionException;
+<<<<<<< Updated upstream
 import com.zebra.android.printer.GraphicsUtil;
+=======
+import com.zebra.android.discovery.BluetoothDiscoverer;
+>>>>>>> Stashed changes
 import com.zebra.android.printer.PrinterLanguage;
 import com.zebra.android.printer.ZebraPrinter;
 import com.zebra.android.printer.ZebraPrinterFactory;
 
 
+<<<<<<< Updated upstream
+=======
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
+>>>>>>> Stashed changes
 public class MainActivity extends AppCompatActivity {
 
+    private ListView lstvw;
+    private ArrayAdapter<String> aAdapter;
+    private BluetoothAdapter bAdapter = BluetoothAdapter.getDefaultAdapter();
     BluetoothPrinterConnection printerConnection;
+<<<<<<< Updated upstream
     private GraphicsUtil graphicsUtil;
+=======
+    private ArrayList<BluetoothDevice> deviceList = new ArrayList<>();
+
+>>>>>>> Stashed changes
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
