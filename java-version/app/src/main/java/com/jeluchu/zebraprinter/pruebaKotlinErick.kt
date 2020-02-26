@@ -18,7 +18,7 @@ import com.zebra.sdk.printer.ZebraPrinterFactory
 import java.io.IOException
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity2 : AppCompatActivity() {
 
     private lateinit var listView: ListView
     private val mDeviceList = ArrayList<String>()
