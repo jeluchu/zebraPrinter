@@ -1,5 +1,5 @@
+/*
 package com.jeluchu.zebraprinter
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.bluetooth.BluetoothDevice
@@ -10,12 +10,12 @@ import android.content.Context
 import android.util.Log
 import android.widget.ListView
 import android.content.IntentFilter
-import com.zebra.sdk.comm.BluetoothConnection
-import com.zebra.sdk.comm.ConnectionException
-import com.zebra.sdk.printer.PrinterLanguage
-import com.zebra.sdk.printer.ZebraPrinter
-import com.zebra.sdk.printer.ZebraPrinterFactory
+import androidx.appcompat.app.AppCompatActivity
+import com.zebra.android.printer.PrinterLanguage
+import com.zebra.android.printer.ZebraPrinter
+import com.zebra.android.printer.ZebraPrinterFactory
 import java.io.IOException
+import java.lang.Exception
 
 
 class MainActivity2 : AppCompatActivity() {
@@ -46,10 +46,12 @@ class MainActivity2 : AppCompatActivity() {
                 mDeviceList.add(device.name + "\n" + device.address)
                 bluetoothDeviceAddress.add(device.address)
                 Log.i("BT", device.name + "\n" + device.address)
-                listView.adapter = ArrayAdapter(
-                        context,
-                        android.R.layout.simple_list_item_1, mDeviceList
-                )
+                listView.adapter = context?.let {
+                    ArrayAdapter<String>(
+                            it,
+                            android.R.layout.simple_list_item_1, mDeviceList
+                    )
+                }
             }
         }
     }
@@ -78,7 +80,7 @@ class MainActivity2 : AppCompatActivity() {
 
     private fun print(bDeviceAddress: String, content: String): ZebraPrinter? {
         var printer: ZebraPrinter? = null
-        val printerConnection = BluetoothConnection(bDeviceAddress)
+        val printerConnection =  BluetoothConnection(bDeviceAddress)
         try {
             printerConnection.open()
             if (printer == null) {
@@ -86,7 +88,7 @@ class MainActivity2 : AppCompatActivity() {
             }
             sendToPrint(printer!!, content)
             printerConnection.close()
-        } catch (e: ConnectionException) {
+        } catch (e: Exception) {
             Log.d("ERROR - ", e.message)
         } finally {
 
@@ -99,7 +101,7 @@ class MainActivity2 : AppCompatActivity() {
             val filepath = getFileStreamPath("TEMP.LBL")
             createFile("TEMP.LBL", content)
             printer.sendFileContents(filepath.absolutePath)
-        } catch (e1: ConnectionException) {
+        } catch (e1: Exception) {
             Log.d("ERROR - ", "Error sending file to printer")
         } catch (e: IOException) {
             Log.d("ERROR - ", "Error creating file")
@@ -115,3 +117,4 @@ class MainActivity2 : AppCompatActivity() {
         os.close()
     }
 }
+*/
